@@ -50,6 +50,8 @@ public class enemy : MonoBehaviour
         //The old system didn't look right, a shot moving towards an enemy but hitting their side creates particles out the opposite side instead of in the direction of motion.
 
         ps.transform.rotation = direction; //New system, the particles are just in whatever direciton the projectile was facing
+
+        rb.AddForce(direction * Vector2.right * d, ForceMode2D.Impulse); //Knockback the enemy based on damage taken.
         
         ps.Play(); //Emit particles based on damage
     }
