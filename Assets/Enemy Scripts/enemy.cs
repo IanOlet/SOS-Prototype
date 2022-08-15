@@ -24,7 +24,7 @@ public class enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (health <= 0) //If the enemy has no health, run the appropriate method
             Die();
@@ -46,6 +46,8 @@ public class enemy : MonoBehaviour
         //ps.transform.rotation = Quaternion.Euler(0, 0, a-180);
 
         //ps.transform.right = direction - new Vector2(transform.position.x, transform.position.y);
+
+        //The old system didn't look right, a shot moving towards an enemy but hitting their side creates particles out the opposite side instead of in the direction of motion.
 
         ps.transform.rotation = direction; //New system, the particles are just in whatever direciton the projectile was facing
         
