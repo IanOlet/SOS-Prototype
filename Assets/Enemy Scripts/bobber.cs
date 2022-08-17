@@ -31,7 +31,7 @@ public class bobber : enemy
         {
             transform.right = player.transform.position - transform.position; //Face the player
             rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 0.01f); //Reduce velocity in other directions, helps it change directions a bit better.
-            rb.AddForce(transform.right * speed * 0.15f, ForceMode2D.Impulse); //Push the bobber in the direction it's facing
+            rb.AddForce(transform.right * speed * .15f, ForceMode2D.Impulse); //Push the bobber in the direction it's facing
             rb.velocity = Vector2.ClampMagnitude(rb.velocity, 30f); //Adheres to the max speed
         }
         else
