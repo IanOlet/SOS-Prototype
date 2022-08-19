@@ -1392,6 +1392,7 @@ MonoBehaviour:
   wep3: {fileID: 0}
   projectiles:
   - {fileID: 3930895683009881833, guid: c50e3eba6ed9bbd4d8e4c5505016fb80, type: 3}
+  - {fileID: 4340156365112945372, guid: 548c1282071106d439412c710cfdc0a0, type: 3}
   basicBullet: {fileID: 3930895683009881833, guid: c50e3eba6ed9bbd4d8e4c5505016fb80, type: 3}
   basic: {fileID: 751877247}
 --- !u!114 &751877243
@@ -2999,6 +3000,14 @@ PrefabInstance:
     - target: {fileID: 204482958238281507, guid: 719c70a0c14361c419c3e545832c6b9f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684523302145379099, guid: 719c70a0c14361c419c3e545832c6b9f, type: 3}
+      propertyPath: ShapeModule.type
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684523302145379099, guid: 719c70a0c14361c419c3e545832c6b9f, type: 3}
+      propertyPath: ShapeModule.enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5347570145103158907, guid: 719c70a0c14361c419c3e545832c6b9f, type: 3}
       propertyPath: blasterProjectile

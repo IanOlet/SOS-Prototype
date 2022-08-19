@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class projectile : MonoBehaviour
 {
-    Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
-    float damage;
-    float speed;
-    int piercing;
+    protected float damage;
+    protected float speed;
+    protected int piercing;
 
-    float lifetime = 5;
+    protected float lifetime = 5;
 
     //explosive as a bool
     //explosion prefab to create when destroyed
@@ -23,7 +23,7 @@ public class projectile : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void FixedUpdate()
     {
         //rb.velocity = transform.right * speed; //Set speed. Will have to do something different for accelerating projectiles
         lifetime -= Time.deltaTime;
@@ -31,7 +31,7 @@ public class projectile : MonoBehaviour
             Destroy(this.gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Enemy")) //Damage enemies that are hit
         {

@@ -13,12 +13,14 @@ public class enemy : MonoBehaviour
     protected GameObject player;
 
     protected ParticleSystem ps; //particle system, attached to a child so we can rotate it
+    //protected ParticleSystem.ShapeModule pShape; //the shape module for the particle system.
 
     // Start is called before the first frame update
     virtual protected void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         ps = GetComponentInChildren<ParticleSystem>();
+        //pShape = ps.shape;
         //player = GameObject.FindGameObjectWithTag("Player");
         player = playerFlight.instance.gameObject;
     }
@@ -56,8 +58,22 @@ public class enemy : MonoBehaviour
         ps.Play(); //Emit particles based on damage
     }
 
+    public void TakeDamage(float d) //Alternate TakeDamage for directionless damage, such as explosions.
+    {
+        health -= d;
+
+        //pShape.shapeType = ParticleSystemShapeType.Sphere; //Switch to a sphere shape for particles
+
+        ps.Play(); //Emit particles based on damage
+
+        //pShape.shapeType = ParticleSystemShapeType.Cone; //Return to standard cone shape
+    }
+
     virtual protected void Die()
     {
+        //pShape.shapeType = ParticleSystemShapeType.Sphere;
+        ps.Play(); //Scatters particles in all directions on death
+
         Destroy(this.gameObject);
         //Maybe also particle effects
     }
