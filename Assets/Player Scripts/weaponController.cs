@@ -26,10 +26,9 @@ public class weaponController : MonoBehaviour
     int bonusPiercing = 0;
 
     public GameObject[] projectiles; //All possible projectile prefabs
-    public GameObject basicBullet;
     //0 is basic bullet
-
-    public weapon basic;
+    //1 is missile
+    //2 is bomb
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +38,8 @@ public class weaponController : MonoBehaviour
 
         unusedWeapon = GetComponents<weapon>(); //Gets references to all waiting weapon scripts
         //unusedWeapon[0].statSet(1, 20, 20, 5, 1, projectiles[0]); //The player always starts with a basic gun.
-        unusedWeapon[0].statSet(3, 3, 10, 10, 1, projectiles[1]); //Test, start with missiles instead
+        //unusedWeapon[0].statSet(3, 3, 10, 10, 1, projectiles[1]); //Test, start with missiles instead
+        unusedWeapon[0].statSet(10, 2, 0, 1, 1, projectiles[2]); //Test, start with bombs instead
         nextWeapon = 1; //The player's second weapon will eventually be unusedWeapon[1]
         weaponList.Add(unusedWeapon[0]);
         applyBonuses();

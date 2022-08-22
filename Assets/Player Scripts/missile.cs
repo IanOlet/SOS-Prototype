@@ -66,7 +66,7 @@ public class missile : projectile
             GameObject b = Instantiate(blastTemplate, transform.position, transform.rotation); //Create the visual of the blast template
             Destroy(b, 0.2f); //Destroy the blast template
         }
-        foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, blastRadius)) //Explode on a hit, damaging all enemies in radius
+        foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, blastRadius)) //Explode on a hit, damaging all enemies in radius. Note that direct hits do double damage because of this.
         {
             if(c.tag == "Enemy")
                 c.GetComponent<enemy>().TakeDamage(damage);

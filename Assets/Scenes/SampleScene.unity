@@ -1393,8 +1393,7 @@ MonoBehaviour:
   projectiles:
   - {fileID: 3930895683009881833, guid: c50e3eba6ed9bbd4d8e4c5505016fb80, type: 3}
   - {fileID: 4340156365112945372, guid: 548c1282071106d439412c710cfdc0a0, type: 3}
-  basicBullet: {fileID: 3930895683009881833, guid: c50e3eba6ed9bbd4d8e4c5505016fb80, type: 3}
-  basic: {fileID: 751877247}
+  - {fileID: 4035513667452075545, guid: ced7c7a3331339c46bb1d958ec5871d7, type: 3}
 --- !u!114 &751877243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3008,6 +3007,10 @@ PrefabInstance:
     - target: {fileID: 3684523302145379099, guid: 719c70a0c14361c419c3e545832c6b9f, type: 3}
       propertyPath: ShapeModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3684523302145379099, guid: 719c70a0c14361c419c3e545832c6b9f, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 5347570145103158907, guid: 719c70a0c14361c419c3e545832c6b9f, type: 3}
       propertyPath: blasterProjectile
