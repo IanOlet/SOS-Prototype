@@ -20,8 +20,6 @@ public class enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         ps = GetComponentInChildren<ParticleSystem>();
-        //pShape = ps.shape;
-        //player = GameObject.FindGameObjectWithTag("Player");
         player = playerFlight.instance.gameObject;
     }
 
@@ -30,7 +28,8 @@ public class enemy : MonoBehaviour
     {
         if (health <= 0) //If the enemy has no health, run the appropriate method
             Die();
-        Motion();
+        else
+            Motion();
     }
 
     virtual protected void Motion()

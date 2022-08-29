@@ -32,14 +32,13 @@ public class bishop : enemy
         speed = 1;
         damage = 2;
         aggroRange = 20f; //Temporary, blasters will have higher aggro later
-
-        rb = GetComponent<Rigidbody2D>();
-        ps = GetComponentInChildren<ParticleSystem>();
+        
         lr = GetComponent<LineRenderer>();
         lr.positionCount = 2; //Only 2 vertices in our line, the bishop and where it's facing
         laserEnds = new Vector3[2];
         lr.enabled = false;
-        player = playerFlight.instance.gameObject;
+
+        base.Start();
     }
 
     protected override void Motion()

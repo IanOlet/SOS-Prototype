@@ -26,9 +26,7 @@ public class blaster : enemy
         aggroRange = 20f; //Temporary, blasters will have higher aggro later
         shootRange = 20f;
 
-        rb = GetComponent<Rigidbody2D>();
-        ps = GetComponentInChildren<ParticleSystem>();
-        player = playerFlight.instance.gameObject;
+        base.Start();
     }
 
     protected override void Motion()

@@ -16,9 +16,7 @@ public class bobber : enemy
         damage = 1;
         aggroRange = 20f;
 
-        rb = GetComponent<Rigidbody2D>();
-        ps = GetComponentInChildren<ParticleSystem>();
-        player = playerFlight.instance.gameObject;
+        base.Start();
     }
 
     protected override void Motion()

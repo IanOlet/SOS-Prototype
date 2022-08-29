@@ -11,12 +11,13 @@ public class missile : projectile
     protected float seekStrength = 3f; //How fast missile can turn to seek a target (3 is standard for missiles)
     protected float seekRadius = 7f; //7 is standard for missiles
 
+    bool findingTarget = false; //Whether the target finding coroutine is already running
+
     LayerMask enemyMask;
 
     private void Awake()
     {
         LayerMask.GetMask("Enemy"); //Get the layer for enemies for overlapCircle calls
-        acquireTarget(); //Start looking for targets
     }
 
     // Update is called once per frame
@@ -31,6 +32,14 @@ public class missile : projectile
 
             rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 0.2f); //Reduce velocity in other directions, helps it change directions a bit better.
             rb.AddForce(transform.right * speed * .15f, ForceMode2D.Impulse); //Accellerate
+        }
+        else //Otherwise find a target
+        {
+            if (!findingTarget)
+            {
+                StartCoroutine(acquireTarget());
+                findingTarget = true;
+            }
         }
 
         lifetime -= Time.deltaTime;
@@ -49,16 +58,20 @@ public class missile : projectile
 
     IEnumerator acquireTarget() //Coroutine for finding targets
     {
-        float targetDistance = seekRadius + 0.01f;
-        foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, seekRadius)) //Look for enemies within the seek radius of the missile
+        while (target == null)
         {
-            if (c.tag == "Enemy" && Vector2.Distance(transform.position, c.transform.position) < targetDistance) //Check all nearby enemies to find which one is closest
+            float targetDistance = seekRadius + 0.01f;
+            foreach (Collider2D c in Physics2D.OverlapCircleAll(transform.position, seekRadius)) //Look for enemies within the seek radius of the missile
             {
-                target = c.gameObject;
-                targetDistance = Vector2.Distance(transform.position, target.transform.position);
+                if (c.tag == "Enemy" && Vector2.Distance(transform.position, c.transform.position) < targetDistance) //Check all nearby enemies to find which one is closest
+                {
+                    target = c.gameObject;
+                    targetDistance = Vector2.Distance(transform.position, target.transform.position);
+                    findingTarget = false; //Target found, reset the bool for next time
+                }
             }
+            yield return new WaitForSeconds(0.2f); //Searches for targets every .2 seconds
         }
-        yield return new WaitForSeconds(0.2f); //Searches for targets every .2 seconds
     }
 
     protected override void OnTriggerEnter2D(Collider2D collision)
@@ -77,8 +90,5 @@ public class missile : projectile
         piercing -= 1; //Decrement piercing
         if (piercing <= 0) //If piercing runs out, delete the projectile
             Destroy(this.gameObject); //Delete the projectile
-
-        else
-            acquireTarget(); //If there are shots remaining, find a new target
     }
 }

@@ -38,9 +38,9 @@ public class weaponController : MonoBehaviour
 
         unusedWeapon = GetComponents<weapon>(); //Gets references to all waiting weapon scripts
         //unusedWeapon[0].statSet(1, 20, 20, 5, 1, projectiles[0]); //The player always starts with a basic gun.
-        unusedWeapon[0].statSet(1, 50, 20, 15, 1, projectiles[0]); //Testing super machine gun
+        //unusedWeapon[0].statSet(1, 50, 20, 15, 1, projectiles[0]); //Testing super machine gun
         //unusedWeapon[0].statSet(3, 3, 10, 10, 1, projectiles[1]); //Test, start with missiles instead
-        //unusedWeapon[0].statSet(1, 10, 15, 5, 1, projectiles[1]); //Test with new basic weapon with slight homing
+        unusedWeapon[0].statSet(1, 10, 15, 5, 1, projectiles[1]); //Test with new basic weapon with slight homing
         //unusedWeapon[0].statSet(10, 2, 0, 1, 1, projectiles[2]); //Test, start with bombs instead
         nextWeapon = 1; //The player's second weapon will eventually be unusedWeapon[1]
         weaponList.Add(unusedWeapon[0]);
