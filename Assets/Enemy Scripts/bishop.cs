@@ -8,7 +8,6 @@ public class bishop : enemy
     LineRenderer lr;
 
     float aggroRange; //How close the player has to be for the enemy to be active
-    bool active = false; //If the bishop has seen the player (In standard gameplay bishops will always be active)
     float maxHealth = 50;
     float warmupTime = 3f; //Time before the bishop fires once it starts
     float warmup = 0;

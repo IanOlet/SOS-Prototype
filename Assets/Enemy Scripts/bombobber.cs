@@ -5,7 +5,6 @@ using UnityEngine;
 public class bombobber : enemy //Same AI as a normal bobber, but it explodes if the player stays close for too long or on death
 {
     float aggroRange; //How close the player has to be for the enemy to be active
-    bool active = false; //If the bobber has seen the player
     float maxHealth = 10;
 
     float blastRadius; //The range of the explosion's damage effect
@@ -16,9 +15,7 @@ public class bombobber : enemy //Same AI as a normal bobber, but it explodes if 
     bool lit = false; //Whether the fuse is currently lit
 
     public GameObject blastTemplate; //The effect used for explosions
-
-    SpriteRenderer sr;
-    Color baseColor;
+    
 
     Coroutine fuseCo; //The coroutine for the fuse. Used when cancelling the fuse coroutine
 
@@ -34,9 +31,6 @@ public class bombobber : enemy //Same AI as a normal bobber, but it explodes if 
         fuseRange = 8f;
         maxFuse = 1f;
         fuse = maxFuse;
-
-        sr = GetComponent<SpriteRenderer>();
-        baseColor = sr.color;
 
         base.Start();
     }

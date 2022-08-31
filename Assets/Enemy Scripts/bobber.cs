@@ -5,7 +5,6 @@ using UnityEngine;
 public class bobber : enemy
 {
     float aggroRange; //How close the player has to be for the enemy to be active
-    bool active = false; //If the bobber has seen the player
     float maxHealth = 10;
 
     // Start is called before the first frame update

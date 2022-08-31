@@ -8,7 +8,6 @@ public class blaster : enemy
 
     float aggroRange; //How close the player has to be for the enemy to be active
     float shootRange; //How close the blaster has to be before it shoots
-    bool active = false; //If the blaster has seen the player
     float maxHealth = 10;
     float shootCooldown = 2f; //How many seconds between shots
     float cooling; //Current cooldown on shots

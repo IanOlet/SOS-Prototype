@@ -8,6 +8,8 @@ public class enemy : MonoBehaviour
     protected int damage;
     protected int speed;
 
+    protected bool active = false; //If the enemy is active, used to keep them from doing things until they finish the spawn animation.
+
     protected Rigidbody2D rb;
 
     protected GameObject player;
@@ -15,11 +17,28 @@ public class enemy : MonoBehaviour
     protected ParticleSystem ps; //particle system, attached to a child so we can rotate it
     //protected ParticleSystem.ShapeModule pShape; //the shape module for the particle system.
 
+    protected SpriteRenderer sr;
+    protected Color baseColor;
+
     // Start is called before the first frame update
-    virtual protected void Start()
+
+    private void Awake()
     {
+        sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         ps = GetComponentInChildren<ParticleSystem>();
+
+        baseColor = sr.color;
+    }
+
+    virtual protected void Start()
+    {
+        /*sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
+        ps = GetComponentInChildren<ParticleSystem>();
+
+        baseColor = sr.color;*/
+
         player = playerFlight.instance.gameObject;
     }
 
@@ -75,5 +94,26 @@ public class enemy : MonoBehaviour
 
         Destroy(this.gameObject);
         //Maybe also particle effects
+    }
+
+    public void directorSpawn() //Called when the director spawns an enemy so it goes through an animation before being active
+    {
+        active = false;
+        StartCoroutine(fadeIn());
+    }
+
+    IEnumerator fadeIn() //Handles the spawning animation and bypassing aggro distance for director spawned enemies.
+    {
+        float fadeTimer = 0f;
+        while(fadeTimer < 1)
+        {
+            fadeTimer += 0.1f;
+            //sr.color = new Color(baseColor.r, baseColor.g, baseColor.b, fadeTimer); //Temporarily just fade in from invisible as the spawn effect.
+            yield return new WaitForSeconds(0.1f);
+        }
+        //sr.color = new Color(baseColor.r, baseColor.g, baseColor.b, 1f);
+        active = true; //After fading in, set the enemy to active regardless of distance.
+
+        //Color changing currently disabled until better effect is found. Fading from invisible seemed unfair at times.
     }
 }
