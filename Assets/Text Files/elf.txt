@@ -1,0 +1,1 @@
+Wind,Sunlight,Moonlight,Song,Motion,Light,Leaves,Rain,Patterns,Dancing,Flying,Singing,Weeping,Laughter,Birds,Colors,Dreams,Clouds,Water;Trees,Branches,Leaves,Forests,Seas,Waters,Mountains,Waves,Skies,Stars,Suns,Hearts,Minds,Souls

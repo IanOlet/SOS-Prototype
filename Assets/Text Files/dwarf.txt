@@ -1,0 +1,1 @@
+Rock,Iron,Steel,Earth,Skill,Fire,Hammer,Mastery,Hearth,Axe,Glass,Clay,Copper,Ruby,Emerald;Stone,Tin,Diamond,Platinum,Sapphire,Steel,Forge,Shield,Craft,Experience,Home,Hold

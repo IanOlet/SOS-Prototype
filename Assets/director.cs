@@ -88,6 +88,8 @@ public class director : MonoBehaviour
             Vector3 direction = Random.insideUnitCircle * spawnPos; //Get a direction relative to the player
             direction = direction.normalized;
             spawnPos = spawnPos + (direction * Random.Range(10f, 30f)); //Get a position between 10 and 40 units away from the player
+            if(Vector3.Distance(spawnPos,playerFlight.instance.transform.position) < 5f)
+                    spawnPos = spawnPos + new Vector3(10f, 10f, 0f); //Noticed some instances of enemies spawning on top of the player, should hopefully prevent this
 
             if(budget >= 1500 && Random.value > givenChance) //Bishop trio
             {

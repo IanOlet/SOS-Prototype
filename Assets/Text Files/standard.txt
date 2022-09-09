@@ -1,0 +1,1 @@
+First,Second,Third,Fourth,Fifth,Triumphant,Invincible,Moonlit,Starcrossed,Fortunate,Shining,True,False,Shadowy,Bright,Fiery,Freezing,Bubbly,Sailing,Voyaging,Wandering,Diving,Drunk,Floating,Sinking;Fish,Whale,Dolphin,Eagle,Snail,Rock,Vessel,Schooner,Drifter,Voyager,Wanderer,Gull,Songbird,Galleon,Dragon,Unicorn,Serpent,Shark,Dragon,Creature,Knight,Salt,Ocean,Sea
