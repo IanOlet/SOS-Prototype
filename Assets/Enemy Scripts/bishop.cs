@@ -29,7 +29,7 @@ public class bishop : enemy
     {
         health = maxHealth; //Set the values for the enemy.
         speed = 1;
-        damage = 2;
+        damage = 20;
         aggroRange = 20f; //Temporary, blasters will have higher aggro later
         
         lr = GetComponent<LineRenderer>();

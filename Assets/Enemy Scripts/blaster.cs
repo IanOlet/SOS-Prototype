@@ -21,7 +21,7 @@ public class blaster : enemy
     {
         health = maxHealth; //Set the values for the enemy.
         speed = 1;
-        damage = 1;
+        damage = 10;
         aggroRange = 20f; //Temporary, blasters will have higher aggro later
         shootRange = 20f;
 

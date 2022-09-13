@@ -12,7 +12,7 @@ public class bobber : enemy
     {
         health = maxHealth; //Set the values for the enemy.
         speed = 1;
-        damage = 1;
+        damage = 5;
         aggroRange = 20f;
 
         base.Start();
@@ -36,6 +36,14 @@ public class bobber : enemy
             rb.velocity = Vector2.Lerp(rb.velocity, Vector2.zero, 0.05f); //Slow down
             if (rb.velocity.magnitude < 0.1f) //If you're moving very slow then just stop
                 rb.velocity = Vector2.zero;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.tag == "Player") //Bobbers deal damage on contact
+        {
+            playerHealth.instance.takeDamage(damage);
         }
     }
 }

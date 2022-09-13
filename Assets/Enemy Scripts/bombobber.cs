@@ -24,7 +24,7 @@ public class bombobber : enemy //Same AI as a normal bobber, but it explodes if 
     {
         health = maxHealth; //Set the values for the enemy.
         speed = 1;
-        damage = 1;
+        damage = 10;
         aggroRange = 20f;
 
         blastRadius = 5;
@@ -105,10 +105,20 @@ public class bombobber : enemy //Same AI as a normal bobber, but it explodes if 
             if (c.tag == "Enemy")
                 c.GetComponent<enemy>().TakeDamage(damage);
             else if (c.tag == "Player")
-                Debug.Log("Player in explosion. Replace this once damage is added");
+                playerHealth.instance.takeDamage(damage); //Damage the player
         }
         GameObject b = Instantiate(blastTemplate, transform.position, transform.rotation); //Create blast template visual
         Destroy(b, 0.2f); //Destroy the blast template
         base.Die(); //Die normally
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.collider.tag == "Player") //If the bombobber hits the player, it deals damage and shortens the fuse
+        {
+            playerHealth.instance.takeDamage(damage);
+            if (fuse < 0.2f)
+                fuse = 0.2f;
+        }
     }
 }

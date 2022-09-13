@@ -38,6 +38,10 @@ public class projectile : MonoBehaviour
             //collision.GetComponent<enemy>().TakeDamage(damage, new Vector2(transform.position.x, transform.position.y));
             collision.GetComponent<enemy>().TakeDamage(damage, transform.rotation);
         }
+        if (collision.gameObject.tag.Equals("Player")) //Damage the player if hit. Due to how layers are set up, friendly projectiles never actually collide with the player, and therefore don't trigger this code
+        {
+            playerHealth.instance.takeDamage(damage);
+        }
         piercing -= 1; //Decrement piercing
         if (piercing <= 0) //If piercing runs out, delete the projectile
             Destroy(this.gameObject); //Delete the projectile
